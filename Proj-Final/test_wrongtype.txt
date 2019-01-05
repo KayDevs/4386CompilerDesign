@@ -1,0 +1,10 @@
+program
+var A as int;
+var B as int;
+var C as bool;
+begin
+A := readInt;
+B := readInt;
+C := false;
+writeInt A + C;
+end

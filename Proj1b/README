@@ -1,0 +1,10 @@
+run with the following in bash:
+flex proj1b.lex
+gcc -o lexer lex.yy.c
+./lexer < test_input.txt
+
+on windows simply add .exe to the program names, otherwise it's the same
+
+It will then output the appropriate symbol from the symbol table that it recognizes.
+
+

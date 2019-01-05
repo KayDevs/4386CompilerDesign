@@ -1,0 +1,8 @@
+﻿Step 1: Lexing
+Flex was used to move through the tokens and identify (via regex or string matching) what type of token they are.
+Step 2: Parsing
+Bison was used; Data structures were created for each nonterminal, containing the required information for each type of operation. 
+Step 3: Grammar
+Bison was also used here; A simple BNF grammar was written according to the instructions. The data structures were filled out with the required data, taken from the grammar (via Bison’s $1, $2, $3, etc.). A new struct was malloc’d for each nonterminal, and $$ was set to the new struct to be added to the parse tree. Program_main is the root of the parse tree.
+Step 4: Code generation
+This was arguably the hardest part; fprintf was used along with some recursive function calls to write C code that corresponded with the language’s operations. Some operations were copied directly, such as the OP2, OP3, and OP4, but others required more formatting. StatementSequences are written recursively, as are Expressions (and all of the sub-types of Expressions, such as terms and factors). Most errors (such as duplicate variables and type assertion) are handled by the C code itself.

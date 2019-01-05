@@ -1,0 +1,33 @@
+%{
+#include <stdio.h>
+int yylex();
+int yyerror(const char *p) {
+    printf("%s", p);
+}
+%}
+
+/*the only two datatypes we need*/
+%union {
+  int val;
+  char *sym;
+}
+
+%token <val> NUM;
+%token <sym> BOOLLIT IDENT LP RP ASGN SC OP2 OP3 OP4 IF THEN ELSE BEGN END WHILE DO PROGRAM VAR AS INT BOOL WRITEINT READINT;
+
+%type <val> numtoken;
+%type <sym> symtoken;
+
+%start start;
+
+%% /*grammar*/
+start: /*empty*/ | numtoken | symtoken
+numtoken: NUM {printf("%d\n", $1); $$ = $1;}
+symtoken: BOOLLIT|IDENT|LP|RP|ASGN|SC|OP2|OP3|OP4|IF|THEN|ELSE|BEGN|END|WHILE|DO|PROGRAM|VAR|AS|INT|BOOL|WRITEINT|READINT {printf("%s\n", $1); $$ = $1;}
+
+
+%% /*program*/
+int main() {
+    yyparse();
+    return 0;
+}

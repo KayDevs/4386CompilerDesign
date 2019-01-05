@@ -1,0 +1,4 @@
+all: proj3a.y proj3a.l
+	bison -d -t proj3a.y
+	flex -d proj3a.l
+	gcc proj3a.tab.c lex.yy.c

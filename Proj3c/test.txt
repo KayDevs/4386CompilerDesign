@@ -1,0 +1,11 @@
+program
+var A as int;
+var B as int;
+var C as bool;
+var READ as int;
+begin
+A := 25;
+B := 61;
+C := false;
+READ := readInt;
+end
